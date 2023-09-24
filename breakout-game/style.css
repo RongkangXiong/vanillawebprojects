@@ -68,3 +68,40 @@ canvas {
 .rules.show {
   transform: translateX(0);
 }
+
+/* 设置滑块的容器 */
+.slider-container {
+  position: fixed; /* 使用 fixed 或 absolute 定位 */
+  top: 400px;
+  bottom: 20px;
+  right: 50px; /* 把它放在页面的右上角 */
+  width: 80px; /* 可以调整宽度 */
+  height: 20%; /* 使用百分比来填充高度 */
+  background-color: rgba(0, 0, 0, 0); /* 设置背景色 */
+  display: flex;
+
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+
+.slider-container-ball{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.slider-container-paddle{
+  position: absolute;
+  top: 0px;
+  left: 30px;
+}
+
+/* 设置滑块的样式 */
+input[type="range"] {
+  width: 100%; /* 可以自行调整 */
+  max-width: 80px; /* 设置最大宽度 */
+}

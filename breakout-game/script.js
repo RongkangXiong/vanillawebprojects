@@ -10,12 +10,22 @@ const brickRowCount = 9;
 const brickColumnCount = 5;
 const delay = 500; //delay to reset the game
 
+const slider1 = document.getElementById("slider1");
+const slider1Value = document.getElementById("slider1-value");
+
+const slider2 = document.getElementById("slider2");
+const slider2Value = document.getElementById("slider2-value");
+
+let ball_speed = 4;
+let paddle_speed = 8;
+
+
 // Create ball props
 const ball = {
   x: canvas.width / 2,
   y: canvas.height / 2,
   size: 10,
-  speed: 4,
+  speed: ball_speed,
   dx: 4,
   dy: -4,
   visible: true
@@ -27,7 +37,7 @@ const paddle = {
   y: canvas.height - 20,
   w: 80,
   h: 10,
-  speed: 8,
+  speed: paddle_speed,
   dx: 0,
   visible: true
 };
@@ -128,6 +138,7 @@ function moveBall() {
     ball.y + ball.size > paddle.y
   ) {
     ball.dy = -ball.speed;
+
   }
 
   // Brick collision
@@ -204,7 +215,7 @@ function update() {
 
   // Draw everything
   draw();
-
+  console.log(`move ball speed:${ball.speed}`)
   requestAnimationFrame(update);
 }
 
@@ -230,6 +241,17 @@ function keyUp(e) {
     paddle.dx = 0;
   }
 }
+slider1.addEventListener("input", function() {
+  slider1Value.textContent = this.value;
+  ball.speed = this.value;
+  console.log(`ball speed:${ball.speed}`)
+});
+
+slider2.addEventListener("input", function() {
+  slider2Value.textContent = this.value;
+  paddle.speed = this.value;
+  console.log(`paddle speed:${paddle.speed}`)
+});
 
 // Keyboard event handlers
 document.addEventListener('keydown', keyDown);
